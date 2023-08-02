@@ -7,10 +7,6 @@ import Select from 'react-select';
 
 type Props = {};
 
-type SelectStylesProps = {
-    width: string;
-};
-
 const options = [
     { value: 'city-1', label: 'Минск' },
     { value: 'city-2', label: 'Брест' },
@@ -18,13 +14,14 @@ const options = [
 ];
 
 const colourStyles = {
-    control: (styles: any) => ({
+    control: (styles: object) => ({
         ...styles,
         backgroundColor: 'rgba(71, 147, 255, 0.20)',
         width: '194px',
         height: '37px',
         border: 'none',
         borderRadius: '10px',
+        cursor: 'pointer',
     }),
 };
 
