@@ -3,8 +3,12 @@
 .day {
     max-width: 400px;
     width: 100%;
-    padding: 20px;
+    height: 300px;
+    padding: 10px 20px;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     box-shadow: $box-shadow;
 
     &__top {
@@ -17,6 +21,7 @@
     &__temp {
         color: #4793ff;
         font-size: 96px;
+        line-height: 100px;
         font-weight: 500;
     }
 
