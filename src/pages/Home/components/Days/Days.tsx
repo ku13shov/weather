@@ -1,6 +1,7 @@
 import React from 'react';
 import Day from './Day';
 import s from './Days.module.scss';
+import Tabs from './Tabs';
 
 export type DaysProps = {
     day_of_week: string;
@@ -78,11 +79,14 @@ const days: DaysProps[] = [
 
 const Days = () => {
     return (
-        <div className={s.days}>
-            {days.map((obj, i) => (
-                <Day key={i} {...obj} />
-            ))}
-        </div>
+        <>
+            <Tabs />
+            <div className={s.days}>
+                {days.map((obj, i) => (
+                    <Day key={i} {...obj} />
+                ))}
+            </div>
+        </>
     );
 };
 
