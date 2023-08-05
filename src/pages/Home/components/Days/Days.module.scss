@@ -1,0 +1,54 @@
+.days {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.day {
+    width: 149px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(71, 147, 255, 0.2);
+
+    &__of_week {
+        color: #000;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 7px;
+    }
+
+    &__of_month {
+        color: #939cb0;
+        font-size: 14px;
+        font-weight: 400;
+        margin-bottom: 12px;
+    }
+
+    svg {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 13px;
+    }
+
+    &__daily_temp {
+        color: #000;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    &__night_temp {
+        color: #939CB0;
+        font-size: 13px;
+        font-weight: 400;
+        margin-bottom: 6px;
+    }
+
+    &__weather {
+        color: #939CB0;
+        font-size: 13px;
+        font-weight: 400;
+    }
+}
