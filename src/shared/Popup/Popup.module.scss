@@ -1,0 +1,88 @@
+@import '../../styles/variables.scss';
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.25);
+}
+.popup {
+    max-width: 750px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding: 42px;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+    z-index: 1000;
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        position: relative;
+    }
+
+    &__close {
+        position: absolute;
+        right: -22px;
+        top: -22px;
+        cursor: pointer;
+        transition: all .2s linear;
+
+        &:hover {
+            transform: rotate(360deg);
+        }
+    }
+
+    &__info {
+        max-width: 200px;
+        width: 100%;
+    }
+
+    &__temp {
+        color: #4793FF;
+        font-size: 60px;
+        line-height: 64px;
+        font-weight: 500;
+    }
+
+    &__day {
+        color: $color-black;
+        font-family: Montserrat;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 400;
+        margin-bottom: 12px;
+    }
+
+    &__info svg {
+        width: 53px;
+        height: 53px;
+        margin-bottom: 12px;
+    }
+
+    &__time, &__city {
+        color: #939CB0;
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    &__time {
+        margin-bottom: 2px;
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
