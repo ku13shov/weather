@@ -23,6 +23,7 @@
     }
 
     &__value {
-        color: #000;
+        color: var(#{--text-default});
+        transition: all 0.1s linear;
     }
 }

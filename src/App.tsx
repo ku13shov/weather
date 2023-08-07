@@ -7,7 +7,7 @@ import Popup from './shared/Popup/Popup';
 const App = () => {
     return (
         <div className='global-container'>
-            <Popup />
+            {/* <Popup /> */}
             <div className="container">
                 <Header />
 

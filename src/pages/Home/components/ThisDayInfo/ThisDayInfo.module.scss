@@ -12,6 +12,8 @@
     position: relative;
     box-shadow: $box-shadow;
     border-radius: 20px;
+    background-color: var(#{--blocks-background-default});
+    transition: all 0.1s linear;
 
     &__img {
         position: absolute;

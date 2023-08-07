@@ -1,2 +1,39 @@
 $box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
 $color-black: #000;
+
+$body-background-dark: #0d1117;
+$body-background-light: #fff;
+
+$blocks-background-dark: #4f4f4f;
+$blocks-background-light: #fff;
+
+$text-dark: #fff;
+$text-light: #000;
+
+$cards-background-dark: #2e3035;
+$cards-background-light: #fff;
+
+$shadow-dark: 0px 3px 20px rgba(5, 5, 5, 0.28);
+$shadow-light: 0px 3px 20px rgba(147, 144, 144, 0.28);
+
+:root {
+    --body-background-dark: #{$body-background-dark};
+    --body-background-light: #{$body-background-light};
+    --body-background-default: #{$body-background-light};
+
+    --blocks-background-dark: #{$blocks-background-dark};
+    --blocks-background-light: #{$blocks-background-light};
+    --blocks-background-default: #{$blocks-background-light};
+
+    --text-dark: #{$text-dark};
+    --text-light: #{$text-light};
+    --text-default: #{$text-light};
+
+    --cards-background-dark: #{$cards-background-dark};
+    --cards-background-light: #{$cards-background-light};
+    --cards-background-default: #{$cards-background-light};
+
+    --shadow-dark: #{$shadow-dark};
+    --shadow-light: #{$shadow-light};
+    --shadow-default: #{$shadow-light};
+}

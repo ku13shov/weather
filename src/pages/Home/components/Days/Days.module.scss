@@ -5,19 +5,23 @@
     box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    background-color: var(#{--blocks-background-default});
+    transition: all 0.1s linear;
 }
 
 .day {
     width: 149px;
     padding: 10px;
     border-radius: 10px;
-    background: rgba(71, 147, 255, 0.2);
+    background: var(#{--cards-background-default});
+    transition: all 0.1s linear;
 
     &__of_week {
-        color: #000;
+        color: var(#{--text-default});
         font-size: 18px;
         font-weight: 500;
         margin-bottom: 7px;
+        transition: all 0.1s linear;
     }
 
     &__of_month {
@@ -34,9 +38,10 @@
     }
 
     &__daily_temp {
-        color: #000;
+        color: var(#{--text-default});
         font-size: 18px;
         font-weight: 500;
+        transition: all 0.1s linear;
     }
 
     &__night_temp {
@@ -72,15 +77,15 @@
 
     .tab,
     &__cancel {
-        color: #000;
+        color: var(#{--text-default});
         font-size: 18px;
         font-weight: 400;
         padding: 7px 20px;
         border-radius: 5px;
-        background: #fff;
+        background: var(#{--blocks-background-default});
         box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
         cursor: pointer;
-        transition: all 0.15s linear;
+        transition: all 0.1s linear;
 
         &:hover {
             background: #4185e6;
