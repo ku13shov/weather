@@ -5,6 +5,7 @@ import { ReactComponent as Logo } from '../../images/logo.svg';
 import { ReactComponent as Theme } from '../../images/theme.svg';
 import Select from 'react-select';
 import { ThemeContext } from '../../context/ThemeContext';
+import { log } from 'console';
 
 type Props = {};
 
@@ -45,13 +46,22 @@ const Header = (props: Props) => {
         option: (styles: object, state: any) => ({
             ...styles,
             color: theme.theme === 'light' ? '#000' : '#fff',
-            backgroundColor: state.isFocused ? '#4793ff' : theme.theme === 'light' ? 'rgba(71, 147, 255, 0.20)' : '#4f4f4f',
+            backgroundColor: state.isFocused
+                ? '#4793ff'
+                : theme.theme === 'light'
+                ? 'rgba(71, 147, 255, 0.20)'
+                : '#4f4f4f',
         }),
     };
 
     const changeTheme = () => {
         theme.changeTheme(theme.theme === 'light' ? 'dark' : 'light');
+        localStorage.setItem('theme', theme.theme === 'light' ? 'dark' : 'light');
     };
+
+    useEffect(() => {
+        theme.changeTheme(localStorage.theme);
+    }, []);
 
     useEffect(() => {
         const root = document.querySelector(':root') as HTMLElement;
