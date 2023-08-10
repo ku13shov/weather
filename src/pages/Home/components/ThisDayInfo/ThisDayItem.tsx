@@ -2,7 +2,7 @@ import React from 'react';
 import s from './ThisDayItem.module.scss';
 import { ReactComponent as Temp } from '../../../../images/temp.svg';
 import { ReactComponent as Pressure } from '../../../../images/pressure.svg';
-import { ReactComponent as Precipitation } from '../../../../images/precipitation.svg';
+import { ReactComponent as Humidity } from '../../../../images/humidity.svg';
 import { ReactComponent as Wind } from '../../../../images/wind.svg';
 
 type Props = {};
@@ -21,8 +21,8 @@ const renderIcon = (iconName: string) => {
         case 'pressure':
             return <Pressure />;
             break;
-        case 'precipitation':
-            return <Precipitation />;
+        case 'humidity':
+            return <Humidity />;
             break;
         case 'wind':
             return <Wind />;

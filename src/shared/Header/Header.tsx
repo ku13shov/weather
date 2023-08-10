@@ -1,23 +1,34 @@
-import React, { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import s from './Header.module.scss';
 import { ReactComponent as Logo } from '../../images/logo.svg';
 import { ReactComponent as Theme } from '../../images/theme.svg';
-import Select from 'react-select';
+import Select, { SingleValue } from 'react-select';
 import { ThemeContext } from '../../context/ThemeContext';
-import { log } from 'console';
+import { fetchCurrenthWeather } from '../../redux/currentWeatherSlice';
+import { RootState, useAppDispatch, useAppSelector } from '../../redux/store';
 
 type Props = {};
 
+type SelectValue = {
+    value: string;
+    label: string;
+};
+
 const Header = (props: Props) => {
+    const [selectValue, setSelectValue] = useState<SelectValue>({
+        value: 'city-1',
+        label: 'Минск',
+    });
     const theme = useContext(ThemeContext);
+    const dispatch = useAppDispatch();
 
     const options = [
         { value: 'city-1', label: 'Минск' },
         { value: 'city-2', label: 'Брест' },
         { value: 'city-3', label: 'Гомель' },
         { value: 'city-4', label: 'Гродно' },
-        { value: 'city-5', label: 'Могилев' },
+        { value: 'city-5', label: 'Могилёв' },
     ];
 
     const colourStyles = {
@@ -61,6 +72,8 @@ const Header = (props: Props) => {
 
     useEffect(() => {
         theme.changeTheme(localStorage.theme);
+        console.log(selectValue.label);
+        dispatch(fetchCurrenthWeather(selectValue.label));
     }, []);
 
     useEffect(() => {
@@ -92,7 +105,16 @@ const Header = (props: Props) => {
 
             <div className={s.wrapper}>
                 <Theme className={s.theme} onClick={changeTheme} />
-                <Select styles={colourStyles} options={options} defaultValue={options[0]} />
+                <Select
+                    styles={colourStyles}
+                    options={options}
+                    defaultValue={selectValue}
+                    onChange={(e) => {
+                        if (e) {
+                            setSelectValue(e);
+                        }
+                    }}
+                />
             </div>
         </header>
     );

@@ -1,15 +1,18 @@
 import React from 'react';
 import s from './ThisDay.module.scss';
 import {ReactComponent as Sun} from '../../../../images/sun.svg';
+import { RootState, useAppSelector } from '../../../../redux/store';
 
 type Props = {};
 
 function ThisDay({}: Props) {
+    const { temp } = useAppSelector((state: RootState) => state.currentWeather);
+
     return (
         <div className={s.day}>
             <div className={s.day__top}>
                 <div className={s.day__wrapper}>
-                    <div className={s.day__temp}>20°</div>
+                    <div className={s.day__temp}>{Math.round(temp)}°</div>
                     <div className={s.day__name}>Сегодня</div>
                 </div>
 
