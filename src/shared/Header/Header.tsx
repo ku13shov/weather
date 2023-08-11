@@ -7,28 +7,22 @@ import Select, { SingleValue } from 'react-select';
 import { ThemeContext } from '../../context/ThemeContext';
 import { fetchCurrenthWeather } from '../../redux/currentWeatherSlice';
 import { RootState, useAppDispatch, useAppSelector } from '../../redux/store';
+import { CityContext } from '../../context/CityContext';
 
 type Props = {};
 
-type SelectValue = {
-    value: string;
-    label: string;
-};
-
 const Header = (props: Props) => {
-    const [selectValue, setSelectValue] = useState<SelectValue>({
-        value: 'city-1',
-        label: 'Минск',
-    });
     const theme = useContext(ThemeContext);
+    const city = useContext(CityContext);
     const dispatch = useAppDispatch();
 
     const options = [
         { value: 'city-1', label: 'Минск' },
-        { value: 'city-2', label: 'Брест' },
-        { value: 'city-3', label: 'Гомель' },
-        { value: 'city-4', label: 'Гродно' },
-        { value: 'city-5', label: 'Могилёв' },
+        { value: 'city-2', label: 'Витебск' },
+        { value: 'city-3', label: 'Брест' },
+        { value: 'city-4', label: 'Гомель' },
+        { value: 'city-5', label: 'Гродно' },
+        { value: 'city-6', label: 'Могилёв' },
     ];
 
     const colourStyles = {
@@ -65,16 +59,23 @@ const Header = (props: Props) => {
         }),
     };
 
-    const changeTheme = () => {
+    const changeThemeHandler = () => {
         theme.changeTheme(theme.theme === 'light' ? 'dark' : 'light');
         localStorage.setItem('theme', theme.theme === 'light' ? 'dark' : 'light');
     };
 
+    const changeCityHandler = (e: any) => {
+        e?.label && city.changeCity(e?.label)
+    }
+
     useEffect(() => {
         theme.changeTheme(localStorage.theme);
-        console.log(selectValue.label);
-        dispatch(fetchCurrenthWeather(selectValue.label));
     }, []);
+
+    useEffect(() => {
+        theme.changeTheme(localStorage.theme);
+        dispatch(fetchCurrenthWeather(city.city));
+    }, [city.city]);
 
     useEffect(() => {
         const root = document.querySelector(':root') as HTMLElement;
@@ -104,15 +105,13 @@ const Header = (props: Props) => {
             </div>
 
             <div className={s.wrapper}>
-                <Theme className={s.theme} onClick={changeTheme} />
+                <Theme className={s.theme} onClick={changeThemeHandler} />
                 <Select
                     styles={colourStyles}
                     options={options}
-                    defaultValue={selectValue}
+                    defaultValue={options[0]}
                     onChange={(e) => {
-                        if (e) {
-                            setSelectValue(e);
-                        }
+                        changeCityHandler(e);
                     }}
                 />
             </div>
