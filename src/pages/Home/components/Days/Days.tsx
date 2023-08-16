@@ -1,7 +1,10 @@
-import React from 'react';
+import { useContext, useEffect } from 'react';
 import Day from './Day';
 import s from './Days.module.scss';
 import Tabs from './Tabs';
+import { useAppDispatch } from '../../../../redux/store';
+import { fetchDailyWeather } from '../../../../redux/dailyWeatherSlice';
+import { CityContext } from '../../../../context/CityContext';
 
 export type DaysProps = {
     day_of_week: string;
@@ -78,6 +81,13 @@ const days: DaysProps[] = [
 ];
 
 const Days = () => {
+    const dispatch = useAppDispatch();
+    const city = useContext(CityContext);
+
+    useEffect(() => {
+        dispatch(fetchDailyWeather(city.city.value));
+    }, [city.city.value]);    
+
     return (
         <>
             <Tabs />

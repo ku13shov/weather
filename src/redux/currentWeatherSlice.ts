@@ -8,7 +8,7 @@ export interface CurrentWeather {
     temp: number;
     feels_like: number;
     pressure: number;
-    humidity:number;
+    humidity: number;
     wind_speed: number;
     wind_deg: number;
     current_time: number;
@@ -20,9 +20,8 @@ export const fetchCurrenthWeather = createAsyncThunk(
     'currentWeather/fetchCurrenthWeather',
     async (city: string) => {
         const { data } = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=456beb8f2f494aa2e14e7e28c4fcbd9d`,
+            `http://api.weatherapi.com/v1/current.json?key=f01b2211beed42a397d175217231608&q=${city}`,
         );
-
         return data;
     },
 );
@@ -55,14 +54,14 @@ export const currentWeatherSlice = createSlice({
         });
         builder.addCase(fetchCurrenthWeather.fulfilled, (state, action) => {
             state.status = 'success';
-            state.temp = action.payload.main.temp;
-            state.feels_like = action.payload.main.feels_like;
-            state.pressure = action.payload.main.pressure;
-            state.humidity = action.payload.main.humidity;
-            state.wind_speed = action.payload.wind.speed;
-            state.wind_deg = action.payload.wind.deg;
-            state.current_time = action.payload.dt;
-            state.icon = action.payload.weather[0].icon;
+            state.data = action.payload;
+            state.temp = action.payload.current.temp_c;
+            state.feels_like = action.payload.current.feelslike_c;
+            state.pressure = action.payload.current.pressure_mb;
+            state.humidity = action.payload.current.humidity;
+            state.wind_speed = action.payload.current.wind_kph;
+            state.wind_deg = action.payload.current.wind_degree;
+            state.icon = action.payload.current.condition.icon;
         });
         builder.addCase(fetchCurrenthWeather.rejected, (state) => {
             state.status = 'error';

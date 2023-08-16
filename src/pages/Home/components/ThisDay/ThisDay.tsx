@@ -36,7 +36,7 @@ const ThisDay = ({}: Props) => {
                 </div>
 
                 {/* <Sun className={s.day__icon} /> */}
-                {icon && <img className={s.day__icon} src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt="weater icon" />}
+                {icon && <img className={s.day__icon} src={icon} alt="weater icon" />}
             </div>
 
             <div className={s.day__bottom}>
@@ -44,7 +44,7 @@ const ThisDay = ({}: Props) => {
                     Время: <span>{currentTime}</span>
                 </div>
                 <div className={s.day__city}>
-                    Город: <span>{city.city}</span>
+                    Город: <span>{city.city.label}</span>
                 </div>
             </div>
         </div>

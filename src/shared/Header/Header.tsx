@@ -17,12 +17,12 @@ const Header = (props: Props) => {
     const dispatch = useAppDispatch();
 
     const options = [
-        { value: 'city-1', label: 'Минск' },
-        { value: 'city-2', label: 'Витебск' },
-        { value: 'city-3', label: 'Брест' },
-        { value: 'city-4', label: 'Гомель' },
-        { value: 'city-5', label: 'Гродно' },
-        { value: 'city-6', label: 'Могилёв' },
+        { value: '53.9,27.57', label: 'Минск' },
+        { value: 'Witebsk', label: 'Витебск' },
+        { value: 'Brest', label: 'Брест' },
+        { value: 'Gomel', label: 'Гомель' },
+        { value: '53.68,23.81', label: 'Гродно' },
+        { value: '53.91,30.34', label: 'Могилев' },
     ];
 
     const colourStyles = {
@@ -65,7 +65,7 @@ const Header = (props: Props) => {
     };
 
     const changeCityHandler = (e: any) => {
-        e?.label && city.changeCity(e?.label)
+        e?.label && city.changeCity(e?.value, e?.label)        
     }
 
     useEffect(() => {
@@ -74,8 +74,8 @@ const Header = (props: Props) => {
 
     useEffect(() => {
         theme.changeTheme(localStorage.theme);
-        dispatch(fetchCurrenthWeather(city.city));
-    }, [city.city]);
+        dispatch(fetchCurrenthWeather(city.city.value));
+    }, [city.city.value]);
 
     useEffect(() => {
         const root = document.querySelector(':root') as HTMLElement;

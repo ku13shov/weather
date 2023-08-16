@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch } from 'react-redux';
 import currentWeather from './currentWeatherSlice';
+import dailyWeather from './dailyWeatherSlice';
 import { useSelector } from 'react-redux';
 
 export const store = configureStore({
     reducer: {
         currentWeather,
+        dailyWeather
     },
 });
 

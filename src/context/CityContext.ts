@@ -1,11 +1,11 @@
 import { createContext } from 'react';
 
 type Props = {
-    city: string;
-    changeCity: (city: string) => void;
+    city: { value: string; label: string };
+    changeCity: (value: string, label: string) => void;
 };
 
 export const CityContext = createContext<Props>({
-    city: '',
+    city: { value: '', label: '' },
     changeCity: () => {},
 });

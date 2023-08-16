@@ -31,23 +31,28 @@ const getWindDirection = (degrees: number) => {
     return directions[index];
 };
 
+const kmhToMs = (kmh: number) => {
+    const ms = kmh * (1000 / 3600);
+    return ms;
+}
+
 const getWindScale = (windSpeed: number) => {
-    if (windSpeed < 3) {
+    if (kmhToMs(windSpeed) < 3) {
         return 'штиль';
-    } else if (windSpeed >= 3 && windSpeed < 6) {
+    } else if (kmhToMs(windSpeed) >= 3 && kmhToMs(windSpeed) < 6) {
         return 'слабый ветер';
-    } else if (windSpeed >= 6 && windSpeed < 10) {
+    } else if (kmhToMs(windSpeed) >= 6 && kmhToMs(windSpeed) < 10) {
         return 'умеренный ветер';
-    } else if (windSpeed >= 10 && windSpeed < 18) {
+    } else if (kmhToMs(windSpeed) >= 10 && kmhToMs(windSpeed) < 18) {
         return 'сильный ветер';
-    } else if (windSpeed >= 18 && windSpeed < 30) {
+    } else if (kmhToMs(windSpeed) >= 18 && kmhToMs(windSpeed) < 30) {
         return 'щторм';
     } else {
         return 'ураган';
     }
 };
 
-function ThisDayInfo({}: Props) {
+const ThisDayInfo = ({}: Props) => {
     const { feels_like, temp, pressure, humidity, wind_speed, wind_deg } = useAppSelector(
         (state: RootState) => state.currentWeather,
     );
@@ -76,7 +81,7 @@ function ThisDayInfo({}: Props) {
         {
             item_icon: 'wind',
             item_name: 'Ветер',
-            item_value: `${Math.round(wind_speed)} м/с ${getWindDirection(
+            item_value: `${Math.round(kmhToMs(wind_speed))} м/с ${getWindDirection(
                 wind_deg,
             )} - ${getWindScale(Math.round(wind_speed))}`,
         },
