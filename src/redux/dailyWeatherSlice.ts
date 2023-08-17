@@ -6,17 +6,18 @@ import { RootState } from './store';
 export interface DailyWeather {
     data: any;
     status: string;
+    forecast_array: [];
 }
 
 export const fetchDailyWeather = createAsyncThunk(
     'dailyWeather/fetchDailyWeather',
     async (city: string) => {
         const { data } = await axios.get(
-            `http://api.weatherapi.com/v1/forecast.json?key=f01b2211beed42a397d175217231608&q=${city}&days=5&lang=ru`,
+            `http://api.weatherapi.com/v1/forecast.json?key=f01b2211beed42a397d175217231608&q=${city}&days=7&lang=ru`,
         );
 
         console.log(data);
-        
+
         return data;
     },
 );
@@ -24,6 +25,7 @@ export const fetchDailyWeather = createAsyncThunk(
 const initialState: DailyWeather = {
     data: '',
     status: 'loading',
+    forecast_array: [],
 };
 
 export const dailyWeatherSlice = createSlice({
@@ -42,6 +44,7 @@ export const dailyWeatherSlice = createSlice({
         builder.addCase(fetchDailyWeather.fulfilled, (state, action) => {
             state.status = 'success';
             state.data = action.payload;
+            state.forecast_array = action.payload.forecast.forecastday;
         });
         builder.addCase(fetchDailyWeather.rejected, (state) => {
             state.status = 'error';

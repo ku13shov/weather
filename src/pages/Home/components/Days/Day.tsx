@@ -7,7 +7,7 @@ import { ReactComponent as Rain } from '../../../../images/rain.svg';
 import { ReactComponent as SmallRain } from '../../../../images/small_rain.svg';
 import { ReactComponent as Sun } from '../../../../images/sun.svg';
 
-const Day = ({ day_of_week, day_of_month, img, day_temp, night_temp, weather }: DaysProps) => {
+const Day = ({ weather, icon, temp_day, temp_night, timestamp, index }: DaysProps) => {
     const RenderWeatherImg = (iconName: string) => {
         switch (iconName) {
             case 'cloudy':
@@ -31,20 +31,48 @@ const Day = ({ day_of_week, day_of_month, img, day_temp, night_temp, weather }: 
         }
     };
 
+    const getDayAndMonth = (timestamp: number) => {
+        const date = new Date(timestamp * 1000);
+        const day = date.getDate();
+        const monthNames = [
+            'янв',
+            'фев',
+            'мар',
+            'апр',
+            'май',
+            'июн',
+            'июл',
+            'авг',
+            'сен',
+            'окт',
+            'ноя',
+            'дек',
+        ];
+        const month = monthNames[date.getMonth()];
+        return `${day} ${month}`;
+    };
+
+    const getWeekday = (timestamp: number) => {
+        const date = new Date(timestamp * 1000);
+        const weekday = date.getDay();
+        const weekdays = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+        if (index === 0) {
+            return 'Сегодня';
+        } else if (index === 1) {
+            return 'Завтра';
+        } else {
+            return weekdays[weekday];
+        }
+    };
+
     return (
         <div className={s.day}>
-            <div className={s.day__of_week}>{day_of_week}</div>
-            <div className={s.day__of_month}>{day_of_month}</div>
-            {RenderWeatherImg(img)}
-            <div className={s.day__daily_temp}>
-                {day_temp}
-            </div>
-            <div className={s.day__night_temp}>
-                {night_temp}
-            </div>
-            <div className={s.day__weather}>
-                {weather}
-            </div>
+            <div className={s.day__of_week}>{getWeekday(timestamp)}</div>
+            <div className={s.day__of_month}>{getDayAndMonth(timestamp)}</div>
+            <img src={icon} alt="weather" />
+            <div className={s.day__daily_temp}>{Math.round(temp_day)}°</div>
+            <div className={s.day__night_temp}>{Math.round(temp_night)}°</div>
+            <div className={s.day__weather}>{weather}</div>
         </div>
     );
 };
