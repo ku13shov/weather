@@ -5,5 +5,14 @@
         justify-content: space-between;
         gap: 50px;
         margin-bottom: 50px;
+
+        @media (max-width: 1020px) {
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 550px) {
+            gap: 30px;
+            margin-bottom: 30px;
+        }
     }
 }

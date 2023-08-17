@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
 import s from './ThisDay.module.scss';
-import { ReactComponent as Sun } from '../../../../images/sun.svg';
 import { RootState, useAppSelector } from '../../../../redux/store';
 import { CityContext } from '../../../../context/CityContext';
 
@@ -35,7 +34,6 @@ const ThisDay = ({}: Props) => {
                     <div className={s.day__name}>Сегодня</div>
                 </div>
 
-                {/* <Sun className={s.day__icon} /> */}
                 {icon && <img className={s.day__icon} src={icon} alt="weater icon" />}
             </div>
 

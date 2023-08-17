@@ -1,5 +1,5 @@
 import React from 'react';
-import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
+import SwiperCore, { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -7,13 +7,34 @@ import Day from './Day';
 import { RootState, useAppSelector } from '../../../../redux/store';
 import s from './Days.module.scss';
 
-SwiperCore.use([Navigation, Autoplay]);
+SwiperCore.use([Navigation]);
 
 const MySwiper: React.FC = () => {
     const { forecast_array } = useAppSelector((state: RootState) => state.dailyWeather);
 
     return (
-        <Swiper navigation spaceBetween={25} slidesPerView={7}>
+        <Swiper
+            navigation
+            spaceBetween={25}
+            slidesPerView={7}
+            breakpoints={{
+                320: {
+                    slidesPerView: 2,
+                    spaceBetween: 15,
+                },
+                390: {
+                    slidesPerView: 3,
+                    spaceBetween: 15,
+                },
+                768: {
+                    slidesPerView: 5,
+                    spaceBetween: 25,
+                },
+                1020: {
+                    slidesPerView: 7,
+                    spaceBetween: 25,
+                },
+            }}>
             {forecast_array.map((obj: any, i) => (
                 <SwiperSlide key={i} className={s.slide}>
                     <Day

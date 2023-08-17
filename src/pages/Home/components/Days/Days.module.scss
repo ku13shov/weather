@@ -52,13 +52,38 @@
         font-size: 13px;
         font-weight: 400;
     }
+
+    @media (max-width: 550px) {
+        &__of_week {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        &__of_month {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        &__daily_temp {
+            font-size: 16px;
+        }
+
+        &__night_temp {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        &__weather {
+            font-size: 12px;
+        }
+    }
 }
 
 .tabs {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 7px;
+    margin-bottom: 10px;
 
     &__wrapper {
         display: flex;
@@ -66,8 +91,7 @@
         align-items: center;
     }
 
-    .tab,
-    &__cancel {
+    .tab {
         color: var(#{--text-default});
         font-size: 18px;
         font-weight: 400;
@@ -87,5 +111,13 @@
     .active {
         background: #4793ff;
         color: #fff;
+    }
+
+    @media (max-width: 550px) {
+        .tab {
+            font-size: 15px;
+            font-weight: 400;
+            padding: 7px 20px;
+        }
     }
 }

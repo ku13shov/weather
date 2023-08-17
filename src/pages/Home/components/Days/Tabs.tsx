@@ -4,7 +4,6 @@ import { DaysContext } from '../../../../context/DaysContext';
 
 type Props = {};
 
-// const tabs: string[] = ['На неделю', 'На 14 дней'];
 const tabs = [
     { label: 'На неделю', value: '7' },
     { label: 'На 14 дней', value: '14' },

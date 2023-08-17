@@ -14,12 +14,29 @@
     border-radius: 20px;
     background-color: var(#{--blocks-background-default});
     transition: all 0.1s linear;
+    overflow: hidden;
 
     &__img {
         position: absolute;
         top: 0;
-        right: 0;
+        right: -70px;
         max-width: 460px;
         width: 100%;
+        opacity: .8;
+    }
+
+    @media (max-width: 1020px) {
+        padding: 20px;
+        height: auto;
+    }
+
+    @media (max-width: 550px) {
+        padding: 15px;
+        border-radius: 15px;
+        gap: 20px;
+
+        &__img {
+            max-width: 300px;
+        }
     }
 }

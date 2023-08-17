@@ -29,7 +29,9 @@ html {
     border-bottom-right-radius: 10px;
 }
 
-h1, h2, p {
+h1,
+h2,
+p {
     margin: 0;
     padding: 0;
 }
@@ -51,6 +53,10 @@ body {
     width: 100%;
     margin: 0 auto;
     padding: 20px;
+
+    @media (max-width: 700px) {
+        padding: 20px 10px;
+    }
 }
 
 .swiper {
@@ -61,7 +67,8 @@ body {
     user-select: none;
 }
 
-.swiper-button-next:after, .swiper-button-prev:after {
+.swiper-button-next:after,
+.swiper-button-prev:after {
     font-size: 22px;
     font-weight: 700;
 }
@@ -74,6 +81,39 @@ body {
     left: -1px;
 }
 
-.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
     opacity: 0;
+}
+
+@media (max-width: 550px) {
+    .css-1rv6bdm-control,
+    .css-1o8gt5o-control,
+    .css-i6dasj-control,
+    .css-nfjlcs-control {
+        width: 120px !important;
+    }
+    .css-7crn4c-singleValue,
+    .css-qav5hl-singleValue,
+    .css-1jwci6u-menu,
+    .css-a2q6ru-menu {
+        font-size: 13px;
+    }
+
+    .swiper {
+        padding: 0 15px;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+        font-size: 18px;
+    }
+
+    .swiper-button-next {
+        right: -5px;
+    }
+
+    .swiper-button-prev {
+        left: -5px;
+    }
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './ThisDayItem.module.scss';
 import { ReactComponent as Temp } from '../../../../images/temp.svg';
 import { ReactComponent as Pressure } from '../../../../images/pressure.svg';

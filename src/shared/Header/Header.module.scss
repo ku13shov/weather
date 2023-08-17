@@ -28,4 +28,34 @@
         margin-right: 20px;
         cursor: pointer;
     }
+
+    @media (max-width: 550px) {
+        .logo {
+            width: 45px;
+            height: 45px;
+            margin-right: 10px;
+        }
+        .title {
+            font-size: 20px;
+        }
+        .theme {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+    }
+
+    @media (max-width: 370px) {
+        .logo {
+            width: 35px;
+            height: 35px;
+            margin-right: 8px;
+        }
+        .title {
+            font-size: 17px;
+        }
+        .theme {
+            margin-right: 5px;
+        }
+    }
 }

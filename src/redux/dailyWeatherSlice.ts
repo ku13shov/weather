@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { RootState } from './store';
 
@@ -21,8 +20,6 @@ export const fetchDailyWeather = createAsyncThunk(
         const { data } = await axios.get(
             `http://api.weatherapi.com/v1/forecast.json?key=f01b2211beed42a397d175217231608&q=${cityName}&days=${daysCount}&lang=ru`,
         );
-
-        console.log(data);
 
         return data;
     },

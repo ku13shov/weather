@@ -1,26 +1,23 @@
-import { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
 import s from './Header.module.scss';
 import { ReactComponent as Logo } from '../../images/logo.svg';
 import { ReactComponent as Theme } from '../../images/theme.svg';
-import Select, { SingleValue } from 'react-select';
+import Select from 'react-select';
 import { ThemeContext } from '../../context/ThemeContext';
 import { fetchCurrenthWeather } from '../../redux/currentWeatherSlice';
-import { RootState, useAppDispatch, useAppSelector } from '../../redux/store';
+import { useAppDispatch } from '../../redux/store';
 import { CityContext } from '../../context/CityContext';
 
-type Props = {};
-
-const Header = (props: Props) => {
+const Header = () => {
     const theme = useContext(ThemeContext);
     const city = useContext(CityContext);
     const dispatch = useAppDispatch();
 
     const options = [
         { value: '53.9,27.57', label: 'Минск' },
-        { value: 'Witebsk', label: 'Витебск' },
-        { value: 'Brest', label: 'Брест' },
-        { value: 'Gomel', label: 'Гомель' },
+        { value: '55.19,30.21', label: 'Витебск' },
+        { value: '52.09,23.69', label: 'Брест' },
+        { value: '52.42,31.01', label: 'Гомель' },
         { value: '53.68,23.81', label: 'Гродно' },
         { value: '53.91,30.34', label: 'Могилев' },
     ];
@@ -30,7 +27,7 @@ const Header = (props: Props) => {
             ...styles,
             backgroundColor: theme.theme === 'light' ? 'rgba(71, 147, 255, 0.20)' : '#4f4f4f',
             color: '#fff',
-            width: '194px',
+            width: '175px',
             height: '37px',
             border: 'none',
             borderRadius: '10px',
@@ -65,8 +62,8 @@ const Header = (props: Props) => {
     };
 
     const changeCityHandler = (e: any) => {
-        e?.label && city.changeCity(e?.value, e?.label)        
-    }
+        e?.label && city.changeCity(e?.value, e?.label);
+    };
 
     useEffect(() => {
         theme.changeTheme(localStorage.theme);
@@ -96,12 +93,8 @@ const Header = (props: Props) => {
     return (
         <header className={s.header}>
             <div className={s.wrapper}>
-                <Link to="/" className={s.link}>
-                    <Logo className={s.logo} />
-                </Link>
-                <Link to="/" className={s.link}>
-                    <h1 className={s.title}>Weather</h1>
-                </Link>
+                <Logo className={s.logo} />
+                <h1 className={s.title}>Weather</h1>
             </div>
 
             <div className={s.wrapper}>

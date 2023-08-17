@@ -13,6 +13,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex: 0 0 auto;
     }
 
     &__name,
@@ -25,5 +26,24 @@
     &__value {
         color: var(#{--text-default});
         transition: all 0.1s linear;
+    }
+
+    @media (max-width: 550px) {
+        gap: 15px;
+
+        &__icon {
+            width: 30px;
+            height: 30px;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        &__name,
+        &__value {
+            font-size: 13px;
+        }
     }
 }
