@@ -22,6 +22,8 @@ const Header = () => {
         { value: '53.91,30.34', label: 'Могилев' },
     ];
 
+    console.log(theme.theme)
+
     const colourStyles = {
         control: (styles: object) => ({
             ...styles,
@@ -66,11 +68,15 @@ const Header = () => {
     };
 
     useEffect(() => {
-        theme.changeTheme(localStorage.theme);
+        if (localStorage.theme) {
+            theme.changeTheme(localStorage.theme);
+        } else {
+            theme.changeTheme('light');
+        }
+        
     }, []);
 
     useEffect(() => {
-        theme.changeTheme(localStorage.theme);
         dispatch(fetchCurrenthWeather(city.city.value));
     }, [city.city.value]);
 
