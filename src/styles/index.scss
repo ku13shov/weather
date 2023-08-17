@@ -2,11 +2,31 @@
 
 html {
     box-sizing: border-box;
+    scrollbar-color: #888 #f1f1f1;
+    scrollbar-width: thin;
 }
 *,
 *::after,
 *::before {
     box-sizing: inherit;
+}
+
+::-webkit-scrollbar {
+    background-color: #f1f1f1;
+    width: 5px;
+    height: 15px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    @media (max-width: 500px) {
+        height: 10px;
+    }
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 h1, h2, p {

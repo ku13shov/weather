@@ -9,11 +9,17 @@ export interface DailyWeather {
     forecast_array: [];
 }
 
+type Params = {
+    cityName: string;
+    daysCount: string;
+};
+
 export const fetchDailyWeather = createAsyncThunk(
     'dailyWeather/fetchDailyWeather',
-    async (city: string) => {
+    async (params: Params) => {
+        const {cityName, daysCount} = params;
         const { data } = await axios.get(
-            `http://api.weatherapi.com/v1/forecast.json?key=f01b2211beed42a397d175217231608&q=${city}&days=7&lang=ru`,
+            `http://api.weatherapi.com/v1/forecast.json?key=f01b2211beed42a397d175217231608&q=${cityName}&days=${daysCount}&lang=ru`,
         );
 
         console.log(data);

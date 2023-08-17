@@ -3,6 +3,7 @@ import ThisDay from './components/ThisDay/ThisDay';
 import ThisDayInfo from './components/ThisDayInfo/ThisDayInfo';
 import s from './Home.module.scss';
 import Days from './components/Days/Days';
+import { DaysProvider } from '../../provider/DaysProvider';
 
 type Props = {};
 
@@ -14,7 +15,9 @@ function Home({}: Props) {
                 <ThisDayInfo />
             </div>
 
-            <Days />
+            <DaysProvider>
+                <Days />
+            </DaysProvider>
         </div>
     );
 }

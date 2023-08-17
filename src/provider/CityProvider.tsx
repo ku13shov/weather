@@ -6,7 +6,6 @@ type Props = {
 };
 
 export const CityProvider = ({ children, ...props }: Props) => {
-    // const [city, setCity] = useState<string>('Minsk');
     const [city, setCity] = useState({ value: '53.9,27.57', label: 'Минск' });
 
     const changeCity = (cityValue: string, cityLabel: string) => {

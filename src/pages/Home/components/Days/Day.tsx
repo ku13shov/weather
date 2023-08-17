@@ -1,35 +1,7 @@
-import React from 'react';
 import s from './Days.module.scss';
 import { DaysProps } from './Days';
-import { ReactComponent as Cloudy } from '../../../../images/cloudy.svg';
-import { ReactComponent as MainlyCloudy } from '../../../../images/mainly_cloudy.svg';
-import { ReactComponent as Rain } from '../../../../images/rain.svg';
-import { ReactComponent as SmallRain } from '../../../../images/small_rain.svg';
-import { ReactComponent as Sun } from '../../../../images/sun.svg';
 
 const Day = ({ weather, icon, temp_day, temp_night, timestamp, index }: DaysProps) => {
-    const RenderWeatherImg = (iconName: string) => {
-        switch (iconName) {
-            case 'cloudy':
-                return <Cloudy />;
-                break;
-            case 'mainly_cloudy':
-                return <MainlyCloudy />;
-                break;
-            case 'rain':
-                return <Rain />;
-                break;
-            case 'small_rain':
-                return <SmallRain />;
-                break;
-            case 'sun':
-                return <Sun />;
-                break;
-            default:
-                return null;
-                break;
-        }
-    };
 
     const getDayAndMonth = (timestamp: number) => {
         const date = new Date(timestamp * 1000);

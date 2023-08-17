@@ -1,20 +1,23 @@
 .days {
     display: flex;
+    justify-content: space-between;
+    overflow-x: auto;
     gap: 20px;
     padding: 20px;
     box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     background-color: var(#{--blocks-background-default});
     transition: all 0.1s linear;
 }
 
 .day {
-    width: 149px;
+    width: 145px;
     padding: 10px;
     border-radius: 10px;
     background: var(#{--cards-background-default});
     transition: all 0.1s linear;
+    flex: 0 0 auto;
 
     &__of_week {
         color: var(#{--text-default});
