@@ -6,6 +6,7 @@ import { RootState, useAppDispatch, useAppSelector } from '../../../../redux/sto
 import { fetchDailyWeather } from '../../../../redux/dailyWeatherSlice';
 import { CityContext } from '../../../../context/CityContext';
 import { DaysContext } from '../../../../context/DaysContext';
+import MySwiper from './Swipper';
 
 export type DaysProps = {
     weather: string;
@@ -35,7 +36,7 @@ const Days = () => {
         <>
             <Tabs />
             <div className={s.days}>
-                {forecast_array.map((obj: any, i) => (
+                {/* {forecast_array.map((obj: any, i) => (
                     <Day
                         key={i}
                         weather={obj.day.condition.text}
@@ -45,7 +46,8 @@ const Days = () => {
                         timestamp={obj.date_epoch}
                         index={i}
                     />
-                ))}
+                ))} */}
+                <MySwiper />
             </div>
         </>
     );

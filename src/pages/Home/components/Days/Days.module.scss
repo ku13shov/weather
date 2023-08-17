@@ -1,9 +1,7 @@
 .days {
     display: flex;
     justify-content: space-between;
-    overflow-x: auto;
-    gap: 20px;
-    padding: 20px;
+    padding: 20px 0;
     box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -11,20 +9,21 @@
     transition: all 0.1s linear;
 }
 
+.slide {
+    background: var(#{--cards-background-default});
+    border-radius: 10px;
+}
+
 .day {
-    width: 145px;
+    max-width: 145px;
     padding: 10px;
     border-radius: 10px;
-    background: var(#{--cards-background-default});
-    transition: all 0.1s linear;
-    flex: 0 0 auto;
 
     &__of_week {
         color: var(#{--text-default});
         font-size: 18px;
         font-weight: 500;
         margin-bottom: 7px;
-        transition: all 0.1s linear;
     }
 
     &__of_month {
@@ -32,12 +31,6 @@
         font-size: 14px;
         font-weight: 400;
         margin-bottom: 12px;
-    }
-
-    svg {
-        width: 48px;
-        height: 48px;
-        margin-bottom: 13px;
     }
 
     &__daily_temp {
@@ -58,11 +51,6 @@
         color: #939cb0;
         font-size: 13px;
         font-weight: 400;
-    }
-
-    &:hover {
-        box-shadow: 0px 3px 20px rgba(147, 144, 144, 0.28);
-        cursor: pointer;
     }
 }
 
@@ -91,7 +79,7 @@
         transition: all 0.1s linear;
 
         &:hover {
-            background: #4185e6;
+            background: #3466ab;
             color: #fff;
         }
     }

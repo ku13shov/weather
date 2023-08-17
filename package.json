@@ -14,6 +14,7 @@
     "@types/react-redux": "^7.1.25",
     "@types/react-router-dom": "^5.3.3",
     "@types/react-select": "^5.0.1",
+    "@types/swiper": "^6.0.0",
     "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -22,6 +23,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.7.4",
     "sass": "^1.64.2",
+    "swiper": "^9.4.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },

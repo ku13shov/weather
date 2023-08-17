@@ -52,3 +52,28 @@ body {
     margin: 0 auto;
     padding: 20px;
 }
+
+.swiper {
+    padding: 0 25px;
+}
+
+.swiper-wrapper {
+    user-select: none;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.swiper-button-next {
+    right: -1px;
+}
+
+.swiper-button-prev {
+    left: -1px;
+}
+
+.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
+    opacity: 0;
+}
