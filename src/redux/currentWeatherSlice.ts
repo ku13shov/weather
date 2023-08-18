@@ -11,6 +11,7 @@ export interface CurrentWeather {
     wind_speed: number;
     wind_deg: number;
     current_time: number;
+    is_day: number;
     icon: string;
     status: string;
 }
@@ -35,6 +36,7 @@ const initialState: CurrentWeather = {
     wind_deg: 0,
     current_time: 0,
     icon: '',
+    is_day: 0,
     status: 'loading',
 };
 
@@ -61,6 +63,7 @@ export const currentWeatherSlice = createSlice({
             state.wind_speed = action.payload.current.wind_kph;
             state.wind_deg = action.payload.current.wind_degree;
             state.icon = action.payload.current.condition.icon;
+            state.is_day = action.payload.current.is_day;
         });
         builder.addCase(fetchCurrenthWeather.rejected, (state) => {
             state.status = 'error';

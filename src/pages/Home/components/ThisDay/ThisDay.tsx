@@ -12,9 +12,25 @@ const getFormattedTime = () => {
     return `${hours}:${minutes}`;
 };
 
+export const extractNumber = (url: string) => {
+    const regex = /\/(\d+)\.png/;
+    const match = url.match(regex);
+    if (match && match[1]) {
+        return parseInt(match[1]);
+    }
+};
+
+const isDay = (num: number) => {
+    if (num === 0) {
+        return 'night';
+    } else {
+        return 'day';
+    }
+};
+
 const ThisDay = ({}: Props) => {
     const [currentTime, setCurrentTime] = useState(getFormattedTime());
-    const { temp, icon } = useAppSelector((state: RootState) => state.currentWeather);
+    const { temp, icon, is_day } = useAppSelector((state: RootState) => state.currentWeather);
 
     const city = useContext(CityContext);
 
@@ -33,8 +49,8 @@ const ThisDay = ({}: Props) => {
                     <div className={s.day__temp}>{Math.round(temp)}°</div>
                     <div className={s.day__name}>Сегодня</div>
                 </div>
-
-                {icon && <img className={s.day__icon} src={icon} alt="weater icon" />}
+               
+                {icon &&  <img className={s.day__icon} src={`https://raw.githubusercontent.com/ku13shov/weather-images/main/${isDay(is_day)}/${extractNumber(icon)}.svg`} alt="weater" />}
             </div>
 
             <div className={s.day__bottom}>

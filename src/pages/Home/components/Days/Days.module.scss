@@ -33,6 +33,11 @@
         margin-bottom: 12px;
     }
 
+    &__img {
+        width: 60px;
+        height: 60px;
+    }
+
     &__daily_temp {
         color: var(#{--text-default});
         font-size: 18px;

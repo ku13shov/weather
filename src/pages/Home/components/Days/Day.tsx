@@ -1,5 +1,6 @@
 import s from './Days.module.scss';
 import { DaysProps } from './Days';
+import { extractNumber } from '../ThisDay/ThisDay';
 
 const Day = ({ weather, icon, temp_day, temp_night, timestamp, index }: DaysProps) => {
 
@@ -41,7 +42,7 @@ const Day = ({ weather, icon, temp_day, temp_night, timestamp, index }: DaysProp
         <div className={s.day}>
             <div className={s.day__of_week}>{getWeekday(timestamp)}</div>
             <div className={s.day__of_month}>{getDayAndMonth(timestamp)}</div>
-            <img src={icon} alt="weather" />
+            <img className={s.day__img} src={`https://raw.githubusercontent.com/ku13shov/weather-images/main/day/${extractNumber(icon)}.svg`} alt="weather" />
             <div className={s.day__daily_temp}>{Math.round(temp_day)}°</div>
             <div className={s.day__night_temp}>{Math.round(temp_night)}°</div>
             <div className={s.day__weather}>{weather}</div>

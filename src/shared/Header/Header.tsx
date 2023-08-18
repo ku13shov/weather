@@ -22,8 +22,6 @@ const Header = () => {
         { value: '53.91,30.34', label: 'Могилев' },
     ];
 
-    console.log(theme.theme)
-
     const colourStyles = {
         control: (styles: object) => ({
             ...styles,
