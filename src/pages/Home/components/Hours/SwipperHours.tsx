@@ -3,14 +3,19 @@ import SwiperCore, { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import Day from './Day';
 import { RootState, useAppSelector } from '../../../../redux/store';
-import s from './Days.module.scss';
+import s from '../Days/Days.module.scss';
+import Hour from './Hour';
 
 SwiperCore.use([Navigation]);
 
-const SwiperDays: React.FC = () => {
-    const { forecast_array } = useAppSelector((state: RootState) => state.dailyWeather);
+const SwiperHours: React.FC = () => {
+    const { hours_forecast } = useAppSelector((state: RootState) => state.hourlyWeather);
+    const currentTimeEpoch = Math.floor(Date.now() / 1000);
+
+    const hoursArr = hours_forecast.filter((obj: any) => {
+        return obj.time_epoch > currentTimeEpoch - 3600;
+    }).slice(0, 15);
 
     return (
         <Swiper
@@ -35,20 +40,13 @@ const SwiperDays: React.FC = () => {
                     spaceBetween: 25,
                 },
             }}>
-            {forecast_array.map((obj: any, i) => (
+            {hoursArr.map((obj: any, i) => (
                 <SwiperSlide key={i} className={s.slide}>
-                    <Day
-                        weather={obj.day.condition.text}
-                        icon={obj.day.condition.icon}
-                        temp_day={obj.day.maxtemp_c}
-                        temp_night={obj.day.mintemp_c}
-                        timestamp={obj.date_epoch}
-                        index={i}
-                    />
+                    <Hour weather={obj.condition.text} time={obj.time_epoch} index={i} dayOrNight={obj.is_day} img={obj.condition.icon} temp={obj.temp_c} windSpeed={obj.wind_kph} />
                 </SwiperSlide>
             ))}
         </Swiper>
     );
 };
 
-export default SwiperDays;
+export default SwiperHours;

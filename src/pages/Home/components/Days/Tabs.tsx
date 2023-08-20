@@ -5,6 +5,7 @@ import { DaysContext } from '../../../../context/DaysContext';
 type Props = {};
 
 const tabs = [
+    { label: 'Почасовой', value: '2' },
     { label: 'На неделю', value: '7' },
     { label: 'На 14 дней', value: '14' },
 ];

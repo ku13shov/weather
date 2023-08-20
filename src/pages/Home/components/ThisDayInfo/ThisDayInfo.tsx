@@ -30,7 +30,7 @@ const getWindDirection = (degrees: number) => {
     return directions[index];
 };
 
-const kmhToMs = (kmh: number) => {
+export const kmhToMs = (kmh: number) => {
     const ms = kmh * (1000 / 3600);
     return ms;
 }

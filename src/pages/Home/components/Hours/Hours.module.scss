@@ -1,0 +1,66 @@
+.hour {
+    max-width: 145px;
+    padding: 10px;
+    border-radius: 10px;
+
+    &__time {
+        color: var(#{--text-default});
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    &__img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 5px;
+    }
+    
+    &__temp {
+        color: var(#{--text-default});
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    &__weather {
+        color: #939cb0;
+        font-size: 13px;
+        font-weight: 400;
+    }
+
+    &__wind {
+        color: #939cb0;
+        font-size: 13px;
+        font-weight: 400;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    @media (max-width: 550px) {
+        &__time {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+    
+        &__img {
+            margin-bottom: 0px;
+        }
+        
+        &__temp {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+    
+        &__weather {
+            font-size: 12px;
+        }
+    
+        &__wind {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+    }
+}

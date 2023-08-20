@@ -20,7 +20,7 @@ export const extractNumber = (url: string) => {
     }
 };
 
-const isDay = (num: number) => {
+export const isDay = (num: number) => {
     if (num === 0) {
         return 'night';
     } else {

@@ -5,7 +5,9 @@ import { RootState, useAppDispatch, useAppSelector } from '../../../../redux/sto
 import { fetchDailyWeather } from '../../../../redux/dailyWeatherSlice';
 import { CityContext } from '../../../../context/CityContext';
 import { DaysContext } from '../../../../context/DaysContext';
-import MySwiper from './Swipper';
+import SwiperDays from './Swipper';
+import { fetchHourlyWeather } from '../../../../redux/hourlyWeatherSlice';
+import SwiperHours from '../Hours/SwipperHours';
 
 export type DaysProps = {
     weather: string;
@@ -25,6 +27,7 @@ const Days = () => {
     const cityName = city.city.value;
 
     useEffect(() => {
+        dispatch(fetchHourlyWeather({ cityName, daysCount }));
         dispatch(fetchDailyWeather({ cityName, daysCount }));
     }, [city.city.value, daysCount]);
 
@@ -32,7 +35,8 @@ const Days = () => {
         <>
             <Tabs />
             <div className={s.days}>
-                <MySwiper />
+                {+days.days > 2 ? <SwiperDays /> : <SwiperHours />}
+                
             </div>
         </>
     );

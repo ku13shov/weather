@@ -6,7 +6,7 @@ type Props = {
 };
 
 export const DaysProvider = ({ children, ...props }: Props) => {
-    const [days, setDays] = useState<string>('7');
+    const [days, setDays] = useState<string>('2');
 
     const changeDays = (days: string) => {
         return setDays(days);
