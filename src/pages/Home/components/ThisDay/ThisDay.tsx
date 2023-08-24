@@ -2,7 +2,8 @@ import { useState, useEffect, useContext } from 'react';
 import s from './ThisDay.module.scss';
 import { RootState, useAppSelector } from '../../../../redux/store';
 import { CityContext } from '../../../../context/CityContext';
-import ThisDaySkeleton from './ThisDaySkeleton';
+import ThisDayTextSkeleton from './ThisDayTextSkeleton';
+import ThisDayImageSkeleton from './ThisDayImageSkeleton';
 
 const getFormattedTime = () => {
     const now = new Date();
@@ -43,6 +44,13 @@ const ThisDay = () => {
         return () => clearInterval(interval);
     }, []);
 
+    const thisDaySkeletonHTML = (
+        <div className={s.text_skeleton}>
+            <ThisDayTextSkeleton />
+            <ThisDayImageSkeleton />
+        </div>
+    );
+
     const thisDayHTML = (
         <>
             <div className={s.day__top}>
@@ -72,7 +80,7 @@ const ThisDay = () => {
         </>
     );
 
-    return <div className={s.day}>{status === 'loading' ? <ThisDaySkeleton /> : thisDayHTML}</div>;
+    return <div className={s.day}>{status === 'loading' ? thisDaySkeletonHTML : thisDayHTML}</div>;
 };
 
 export default ThisDay;

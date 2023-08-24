@@ -13,6 +13,25 @@
     background-color: var(#{--blocks-background-default});
     transition: all 0.1s linear;
 
+    .text_skeleton {
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+
+        svg {
+            max-width: 175px;
+            width: 100%;
+            height: 280px;
+
+            &:nth-child(2) {
+                max-width: 130px;
+                height: 130px;
+                margin-top: 35px;
+                margin-right: 10px;
+            }
+        }
+    }
+
     &__top {
         display: flex;
         justify-content: space-between;
@@ -56,9 +75,59 @@
         height: auto;
         border-radius: 15px;
 
-        svg {
-            width: 315px;
-            height: 230px;
+        // svg {
+        //     width: 315px;
+        //     height: 230px;
+        // }
+
+        .text_skeleton {
+            gap: 10px;
+    
+            svg {
+                height: 200px;
+
+                clipPath {
+                    rect {
+                        &:first-child {
+                            width: 135px;
+                            height: 55px;
+                            y: 10px;
+                        }
+
+                        &:nth-child(2) {
+                            width: 150px;
+                            height: 30px;
+                            y: 85px;
+                        }
+
+                        &:nth-child(3) {
+                            width: 170px;
+                            height: 25px;
+                            y: 135px;
+                        }
+
+                        &:nth-child(4) {
+                            width: 170px;
+                            height: 25px;
+                            y: 170px;
+                        }
+                    }
+                }
+    
+                &:nth-child(2) {
+                    max-width: 115px;
+                    height: 115px;
+                    margin-top: 15px;
+
+                    clipPath {
+                        rect {
+                            width: 115px;
+                            height: 115px;
+                            y: 0;
+                        }
+                    }
+                }
+            }
         }
 
         &__temp {
@@ -84,9 +153,9 @@
     }
 
     @media (max-width: 390px) {
-        svg {
-            width: 275px;
-            height: 200px;
-        }
+        // svg {
+        //     width: 275px;
+        //     height: 200px;
+        // }
     }
 }
