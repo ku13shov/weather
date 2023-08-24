@@ -63,6 +63,7 @@ const Header = () => {
 
     const changeCityHandler = (e: any) => {
         e?.label && city.changeCity(e?.value, e?.label);
+        localStorage.setItem('city', JSON.stringify(e));
     };
 
     useEffect(() => {
@@ -71,7 +72,13 @@ const Header = () => {
         } else {
             theme.changeTheme('light');
         }
-        
+
+        if (localStorage.city) {
+            const {value, label} = JSON.parse(localStorage.city)
+            city.changeCity(value, label);
+        } else {
+            city.changeCity(city.city.value, city.city.label);
+        }
     }, []);
 
     useEffect(() => {
@@ -106,7 +113,7 @@ const Header = () => {
                 <Select
                     styles={colourStyles}
                     options={options}
-                    defaultValue={options[0]}
+                    defaultValue={localStorage.city ? JSON.parse(localStorage.city) : options[0]}
                     onChange={(e) => {
                         changeCityHandler(e);
                     }}
