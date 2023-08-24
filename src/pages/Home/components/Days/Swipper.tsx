@@ -6,13 +6,22 @@ import 'swiper/css/navigation';
 import Day from './Day';
 import { RootState, useAppSelector } from '../../../../redux/store';
 import s from './Days.module.scss';
+import HourSkeleton from '../Hours/HourSkeleton';
 
 SwiperCore.use([Navigation]);
 
 const SwiperDays: React.FC = () => {
-    const { forecast_array } = useAppSelector((state: RootState) => state.dailyWeather);
+    const { forecast_array, status } = useAppSelector((state: RootState) => state.dailyWeather);
 
-    return (
+    const daysSkeletonHTML = (
+        <div className={s.skeleton_container}>
+            {new Array(7).fill(1).map((_, i) => (
+                <HourSkeleton key={i} />
+            ))}
+        </div>
+    );
+
+    const swiperDaysHTML = (
         <Swiper
             navigation
             spaceBetween={25}
@@ -49,6 +58,8 @@ const SwiperDays: React.FC = () => {
             ))}
         </Swiper>
     );
+
+    return <>{status === 'loading' ? daysSkeletonHTML : swiperDaysHTML}</>;
 };
 
 export default SwiperDays;

@@ -43,41 +43,36 @@ const ThisDay = () => {
         return () => clearInterval(interval);
     }, []);
 
-    return (
-        <div className={s.day}>
-            {status === 'loading' ? (
-                <ThisDaySkeleton />
-            ) : (
-                <div>
-                    {' '}
-                    <div className={s.day__top}>
-                        <div className={s.day__wrapper}>
-                            <div className={s.day__temp}>{Math.round(temp)}°</div>
-                            <div className={s.day__name}>Сегодня</div>
-                        </div>
-
-                        {icon && (
-                            <img
-                                className={s.day__icon}
-                                src={`https://raw.githubusercontent.com/ku13shov/weather-images/main/${isDay(
-                                    is_day,
-                                )}/${extractNumber(icon)}.svg`}
-                                alt="weater"
-                            />
-                        )}
-                    </div>
-                    <div className={s.day__bottom}>
-                        <div className={s.day__time}>
-                            Время: <span>{currentTime}</span>
-                        </div>
-                        <div className={s.day__city}>
-                            Город: <span>{city.city.label}</span>
-                        </div>
-                    </div>
+    const thisDayHTML = (
+        <>
+            <div className={s.day__top}>
+                <div className={s.day__wrapper}>
+                    <div className={s.day__temp}>{Math.round(temp)}°</div>
+                    <div className={s.day__name}>Сегодня</div>
                 </div>
-            )}
-        </div>
+
+                {icon && (
+                    <img
+                        className={s.day__icon}
+                        src={`https://raw.githubusercontent.com/ku13shov/weather-images/main/${isDay(
+                            is_day,
+                        )}/${extractNumber(icon)}.svg`}
+                        alt="weater"
+                    />
+                )}
+            </div>
+            <div className={s.day__bottom}>
+                <div className={s.day__time}>
+                    Время: <span>{currentTime}</span>
+                </div>
+                <div className={s.day__city}>
+                    Город: <span>{city.city.label}</span>
+                </div>
+            </div>
+        </>
     );
+
+    return <div className={s.day}><ThisDaySkeleton /></div>;
 };
 
 export default ThisDay;

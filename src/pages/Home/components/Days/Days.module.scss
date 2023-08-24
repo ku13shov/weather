@@ -149,3 +149,53 @@
         }
     }
 }
+
+.skeleton_container {
+    padding: 0 25px;
+    display: flex;
+    gap: 25px;
+
+    svg {
+        max-width: 143px;
+        height: 205px;
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    @media (max-width: 1020px) {
+        svg {
+            max-width: 165px;
+
+            &:nth-last-child(-n + 2) {
+                display: none;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        svg {
+            max-width: 215px;
+
+            &:nth-last-child(-n + 4) {
+                display: none;
+            }
+        }
+    }
+
+    @media (max-width: 550px) {
+        padding: 0 15px;
+        gap: 15px;
+
+        svg {
+            height: 190px;
+        }
+    }
+
+    @media (max-width: 390px) {
+        svg {
+            &:nth-last-child(-n + 5) {
+                display: none;
+            }
+        }
+    }
+}
