@@ -26,6 +26,10 @@
     &__value {
         color: var(#{--text-default});
         transition: all 0.1s linear;
+
+        svg {
+            margin-top: 6px;
+        }
     }
 
     @media (max-width: 550px) {
@@ -44,6 +48,20 @@
         &__name,
         &__value {
             font-size: 13px;
+        }
+
+        &__value {
+            svg {
+                width: 190px;
+            }
+        }
+    }
+
+    @media (max-width: 390px) {
+        &__value {
+            svg {
+                width: 130px;
+            }
         }
     }
 }

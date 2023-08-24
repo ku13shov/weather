@@ -4,9 +4,7 @@ import s from './Home.module.scss';
 import Days from './components/Days/Days';
 import { DaysProvider } from '../../provider/DaysProvider';
 
-type Props = {};
-
-function Home({}: Props) {
+function Home() {
     return (
         <div className={s.home}>
             <div className={s.home__wrapper}>

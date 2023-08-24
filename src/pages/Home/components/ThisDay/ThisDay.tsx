@@ -4,8 +4,6 @@ import { RootState, useAppSelector } from '../../../../redux/store';
 import { CityContext } from '../../../../context/CityContext';
 import ThisDaySkeleton from './ThisDaySkeleton';
 
-type Props = {};
-
 const getFormattedTime = () => {
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
@@ -29,7 +27,7 @@ export const isDay = (num: number) => {
     }
 };
 
-const ThisDay = ({}: Props) => {
+const ThisDay = () => {
     const [currentTime, setCurrentTime] = useState(getFormattedTime());
     const { temp, icon, is_day, status } = useAppSelector(
         (state: RootState) => state.currentWeather,
