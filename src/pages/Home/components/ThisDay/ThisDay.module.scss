@@ -56,6 +56,11 @@
         height: auto;
         border-radius: 15px;
 
+        svg {
+            width: 315px;
+            height: 230px;
+        }
+
         &__temp {
             font-size: 70px;
             line-height: 74px;
@@ -75,6 +80,13 @@
         }
         &__time {
             margin-bottom: 10px;
+        }
+    }
+
+    @media (max-width: 390px) {
+        svg {
+            width: 275px;
+            height: 200px;
         }
     }
 }

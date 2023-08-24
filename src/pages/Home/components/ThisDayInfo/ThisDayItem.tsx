@@ -4,8 +4,6 @@ import { ReactComponent as Pressure } from '../../../../images/pressure.svg';
 import { ReactComponent as Humidity } from '../../../../images/humidity.svg';
 import { ReactComponent as Wind } from '../../../../images/wind.svg';
 
-type Props = {};
-
 type ItemNameProp = {
     item_name: string;
     item_value: string;

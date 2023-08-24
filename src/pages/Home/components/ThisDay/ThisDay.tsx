@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import s from './ThisDay.module.scss';
 import { RootState, useAppSelector } from '../../../../redux/store';
 import { CityContext } from '../../../../context/CityContext';
+import ThisDaySkeleton from './ThisDaySkeleton';
 
 type Props = {};
 
@@ -30,7 +31,9 @@ export const isDay = (num: number) => {
 
 const ThisDay = ({}: Props) => {
     const [currentTime, setCurrentTime] = useState(getFormattedTime());
-    const { temp, icon, is_day } = useAppSelector((state: RootState) => state.currentWeather);
+    const { temp, icon, is_day, status } = useAppSelector(
+        (state: RootState) => state.currentWeather,
+    );
 
     const city = useContext(CityContext);
 
@@ -44,23 +47,37 @@ const ThisDay = ({}: Props) => {
 
     return (
         <div className={s.day}>
-            <div className={s.day__top}>
-                <div className={s.day__wrapper}>
-                    <div className={s.day__temp}>{Math.round(temp)}°</div>
-                    <div className={s.day__name}>Сегодня</div>
-                </div>
-               
-                {icon &&  <img className={s.day__icon} src={`https://raw.githubusercontent.com/ku13shov/weather-images/main/${isDay(is_day)}/${extractNumber(icon)}.svg`} alt="weater" />}
-            </div>
+            {status === 'loading' ? (
+                <ThisDaySkeleton />
+            ) : (
+                <div>
+                    {' '}
+                    <div className={s.day__top}>
+                        <div className={s.day__wrapper}>
+                            <div className={s.day__temp}>{Math.round(temp)}°</div>
+                            <div className={s.day__name}>Сегодня</div>
+                        </div>
 
-            <div className={s.day__bottom}>
-                <div className={s.day__time}>
-                    Время: <span>{currentTime}</span>
+                        {icon && (
+                            <img
+                                className={s.day__icon}
+                                src={`https://raw.githubusercontent.com/ku13shov/weather-images/main/${isDay(
+                                    is_day,
+                                )}/${extractNumber(icon)}.svg`}
+                                alt="weater"
+                            />
+                        )}
+                    </div>
+                    <div className={s.day__bottom}>
+                        <div className={s.day__time}>
+                            Время: <span>{currentTime}</span>
+                        </div>
+                        <div className={s.day__city}>
+                            Город: <span>{city.city.label}</span>
+                        </div>
+                    </div>
                 </div>
-                <div className={s.day__city}>
-                    Город: <span>{city.city.label}</span>
-                </div>
-            </div>
+            )}
         </div>
     );
 };
