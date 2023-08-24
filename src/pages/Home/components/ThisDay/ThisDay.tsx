@@ -72,7 +72,7 @@ const ThisDay = () => {
         </>
     );
 
-    return <div className={s.day}><ThisDaySkeleton /></div>;
+    return <div className={s.day}>{status === 'loading' ? <ThisDaySkeleton /> : thisDayHTML}</div>;
 };
 
 export default ThisDay;
