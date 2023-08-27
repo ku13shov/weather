@@ -8,6 +8,17 @@ import { RootState, useAppSelector } from '../../../../redux/store';
 import s from './Days.module.scss';
 import HourSkeleton from '../Hours/HourSkeleton';
 
+type DayForecast = {
+    maxtemp_c: number;
+    mintemp_c: number;
+    condition: { text: string; icon: string };
+};
+
+type DaysForecast = {
+    date_epoch: number;
+    day: DayForecast;
+};
+
 SwiperCore.use([Navigation]);
 
 const SwiperDays: React.FC = () => {
@@ -44,18 +55,23 @@ const SwiperDays: React.FC = () => {
                     spaceBetween: 25,
                 },
             }}>
-            {forecast_array.map((obj: any, i) => (
-                <SwiperSlide key={i} className={s.slide}>
-                    <Day
-                        weather={obj.day.condition.text}
-                        icon={obj.day.condition.icon}
-                        temp_day={obj.day.maxtemp_c}
-                        temp_night={obj.day.mintemp_c}
-                        timestamp={obj.date_epoch}
-                        index={i}
-                    />
-                </SwiperSlide>
-            ))}
+            {forecast_array.map(
+                (
+                    obj: DaysForecast,
+                    i,
+                ) => (
+                    <SwiperSlide key={i} className={s.slide}>
+                        <Day
+                            weather={obj.day.condition.text}
+                            icon={obj.day.condition.icon}
+                            temp_day={obj.day.maxtemp_c}
+                            temp_night={obj.day.mintemp_c}
+                            timestamp={obj.date_epoch}
+                            index={i}
+                        />
+                    </SwiperSlide>
+                ),
+            )}
         </Swiper>
     );
 

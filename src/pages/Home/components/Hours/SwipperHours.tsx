@@ -8,6 +8,14 @@ import s from '../Days/Days.module.scss';
 import Hour from './Hour';
 import HourSkeleton from './HourSkeleton';
 
+type HoursForecast = {
+    wind_kph: number;
+    temp_c: number;
+    is_day: number;
+    time_epoch: number;
+    condition: { text: string; icon: string };
+};
+
 SwiperCore.use([Navigation]);
 
 const SwiperHours: React.FC = () => {
@@ -15,7 +23,7 @@ const SwiperHours: React.FC = () => {
     const currentTimeEpoch = Math.floor(Date.now() / 1000);
 
     const hoursArr = hours_forecast
-        .filter((obj: any) => {
+        .filter((obj: { time_epoch: number }) => {
             return obj.time_epoch > currentTimeEpoch - 3600;
         })
         .slice(0, 15);
@@ -51,7 +59,7 @@ const SwiperHours: React.FC = () => {
                     spaceBetween: 25,
                 },
             }}>
-            {hoursArr.map((obj: any, i) => (
+            {hoursArr.map((obj: HoursForecast, i) => (
                 <SwiperSlide key={i} className={s.slide}>
                     <Hour
                         weather={obj.condition.text}
