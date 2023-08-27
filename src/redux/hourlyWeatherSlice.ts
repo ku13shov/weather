@@ -3,7 +3,7 @@ import axios from 'axios';
 import { RootState } from './store';
 
 export interface HourlyWeather {
-    data: any;
+    data: {};
     status: string;
     hours_forecast: [];
 }
@@ -25,7 +25,7 @@ export const fetchHourlyWeather = createAsyncThunk(
 );
 
 const initialState: HourlyWeather = {
-    data: '',
+    data: {},
     status: 'loading',
     hours_forecast: [],
 };
@@ -48,7 +48,7 @@ export const hourlyWeatherSlice = createSlice({
             state.data = action.payload;
             state.hours_forecast = action.payload.forecast.forecastday;
 
-            state.hours_forecast = action.payload.forecast.forecastday.map((obj: any) => obj.hour).reduce((acc: [], curr: []) => acc.concat(curr), []);
+            state.hours_forecast = action.payload.forecast.forecastday.map((obj: {hour: number}) => obj.hour).reduce((acc: [], curr: []) => acc.concat(curr), []);
         });
         builder.addCase(fetchHourlyWeather.rejected, (state) => {
             state.status = 'error';

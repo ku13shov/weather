@@ -3,7 +3,7 @@ import axios from 'axios';
 import { RootState } from './store';
 
 export interface DailyWeather {
-    data: any;
+    data: {};
     status: string;
     forecast_array: [];
 }
@@ -25,7 +25,7 @@ export const fetchDailyWeather = createAsyncThunk(
 );
 
 const initialState: DailyWeather = {
-    data: '',
+    data: {},
     status: 'loading',
     forecast_array: [],
 };

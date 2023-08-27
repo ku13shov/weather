@@ -9,7 +9,7 @@ export const CityProvider = ({ children, ...props }: Props) => {
     const [city, setCity] = useState({ value: '53.9,27.57', label: 'Минск' });
 
     const changeCity = (cityValue: string, cityLabel: string) => {
-        return setCity((prev: any) => ({
+        return setCity((prev: {}) => ({
             ...prev,
             value: cityValue,
             label: cityLabel,

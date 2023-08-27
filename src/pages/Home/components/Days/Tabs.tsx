@@ -2,15 +2,13 @@ import { useState, useContext } from 'react';
 import s from './Days.module.scss';
 import { DaysContext } from '../../../../context/DaysContext';
 
-type Props = {};
-
 const tabs = [
     { label: 'Почасовой', value: '2' },
     { label: 'На неделю', value: '7' },
     { label: 'На 14 дней', value: '14' },
 ];
 
-const Tabs = (props: Props) => {
+const Tabs = () => {
     const [activeTab, setActiveTab] = useState(0);
     const days = useContext(DaysContext);
 

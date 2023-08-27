@@ -3,7 +3,7 @@ import axios from 'axios';
 import { RootState } from './store';
 
 export interface CurrentWeather {
-    data: any;
+    data: {};
     temp: number;
     feels_like: number;
     pressure: number;
@@ -27,7 +27,7 @@ export const fetchCurrenthWeather = createAsyncThunk(
 );
 
 const initialState: CurrentWeather = {
-    data: '',
+    data: {},
     temp: 0,
     feels_like: 0,
     pressure: 0,

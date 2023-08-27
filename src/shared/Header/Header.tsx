@@ -45,7 +45,7 @@ const Header = () => {
             zIndex: '1000',
         }),
 
-        option: (styles: object, state: any) => ({
+        option: (styles: object, state: { isFocused: boolean }) => ({
             ...styles,
             color: theme.theme === 'light' ? '#000' : '#fff',
             backgroundColor: state.isFocused
@@ -61,7 +61,7 @@ const Header = () => {
         localStorage.setItem('theme', theme.theme === 'light' ? 'dark' : 'light');
     };
 
-    const changeCityHandler = (e: any) => {
+    const changeCityHandler = (e: { label: string; value: string }) => {
         e?.label && city.changeCity(e?.value, e?.label);
         localStorage.setItem('city', JSON.stringify(e));
     };
@@ -74,7 +74,7 @@ const Header = () => {
         }
 
         if (localStorage.city) {
-            const {value, label} = JSON.parse(localStorage.city)
+            const { value, label } = JSON.parse(localStorage.city);
             city.changeCity(value, label);
         } else {
             city.changeCity(city.city.value, city.city.label);
