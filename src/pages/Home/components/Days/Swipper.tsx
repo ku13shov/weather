@@ -51,7 +51,7 @@ const SwiperDays: React.FC = () => {
                     spaceBetween: 25,
                 },
                 1020: {
-                    slidesPerView: forecast_array.length,
+                    slidesPerView: forecast_array.length > 7 ? 7 : forecast_array.length,
                     spaceBetween: 25,
                 },
             }}>
