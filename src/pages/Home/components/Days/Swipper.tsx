@@ -39,19 +39,19 @@ const SwiperDays: React.FC = () => {
             slidesPerView={7}
             breakpoints={{
                 320: {
-                    slidesPerView: 2,
+                    slidesPerView: forecast_array.length > 2 ? 2 : forecast_array.length,
                     spaceBetween: 15,
                 },
                 390: {
-                    slidesPerView: 3,
+                    slidesPerView: forecast_array.length > 3 ? 3 : forecast_array.length,
                     spaceBetween: 15,
                 },
                 768: {
-                    slidesPerView: 5,
+                    slidesPerView: forecast_array.length > 5 ? 5 : forecast_array.length,
                     spaceBetween: 25,
                 },
                 1020: {
-                    slidesPerView: 7,
+                    slidesPerView: forecast_array.length,
                     spaceBetween: 25,
                 },
             }}>
