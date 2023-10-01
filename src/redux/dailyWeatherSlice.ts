@@ -18,7 +18,7 @@ export const fetchDailyWeather = createAsyncThunk(
     async (params: Params) => {
         const {cityName, daysCount} = params;
         const { data } = await axios.get(
-            `https://api.weatherapi.com/v1/forecast.json?key=72ffaf05481c4e199f9151519231709&q=${cityName}&days=${daysCount}&lang=ru`,
+            `https://api.weatherapi.com/v1/forecast.json?key=bfc5a259c0874275a06111952230110&q=${cityName}&days=${daysCount}&lang=ru`,
         );
         return data;
     },
