@@ -20,7 +20,7 @@ export const fetchCurrenthWeather = createAsyncThunk(
     'currentWeather/fetchCurrenthWeather',
     async (city: string) => {
         const { data } = await axios.get(
-            `https://api.weatherapi.com/v1/current.json?key=21f65c13c8624af7b0e123225230111&q=${city}`,
+            `https://api.weatherapi.com/v1/current.json?key=185560efff444f0a86d180312231511&q=${city}`,
         );
         return data;
     },

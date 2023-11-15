@@ -18,7 +18,7 @@ export const fetchHourlyWeather = createAsyncThunk(
     async (params: Params) => {
         const { cityName, daysCount } = params;
         const { data } = await axios.get(
-            `https://api.weatherapi.com/v1/forecast.json?key=21f65c13c8624af7b0e123225230111&q=${cityName}&days=${daysCount}&lang=ru`,
+            `https://api.weatherapi.com/v1/forecast.json?key=185560efff444f0a86d180312231511&q=${cityName}&days=${daysCount}&lang=ru`,
         );
         return data;
     },
@@ -48,7 +48,9 @@ export const hourlyWeatherSlice = createSlice({
             state.data = action.payload;
             state.hours_forecast = action.payload.forecast.forecastday;
 
-            state.hours_forecast = action.payload.forecast.forecastday.map((obj: {hour: number}) => obj.hour).reduce((acc: [], curr: []) => acc.concat(curr), []);
+            state.hours_forecast = action.payload.forecast.forecastday
+                .map((obj: { hour: number }) => obj.hour)
+                .reduce((acc: [], curr: []) => acc.concat(curr), []);
         });
         builder.addCase(fetchHourlyWeather.rejected, (state) => {
             state.status = 'error';
